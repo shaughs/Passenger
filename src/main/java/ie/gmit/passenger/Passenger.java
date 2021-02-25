@@ -12,35 +12,42 @@ public class Passenger {
     private String title;
     private String name;
     private String ID;
-    private String phoneNumber;
+    private String phone;
     private int age;
 
-    // A Default Constructor
-    public Passenger()
+    public Passenger(String title, String name, String ID, String phone, int age)
     {
-        title = "";
-        name = "";
-        ID = "";
-        phoneNumber = "";
-        age = 0;
+        setTitle(title);
+        setName(name);
+        setID(ID);
+        setPhoneNumber(phone);
+        setAge(age);
     }
 
     public String getTitle() {
         return title;
     }
 
-    public String setTitle(String title) {
-        this.title = title;
-        return title;
+    public void setTitle(String title) {
+        if((title == "Mr") || (title == "Mrs") || (title == "Ms")){
+            this.title = title;
+
+        }else{
+            throw new IllegalArgumentException("Invalid Title");
+        }
     }
 
     public String getName() {
+        this.name = name;
         return name;
     }
 
-    public String setName(String name) {
-        this.name = name;
-        return name;
+    public void setName(String name) {
+        if(name.length() >= 3){
+            this.name = name;
+        }else{
+            throw new IllegalArgumentException("Invalid Name");
+        }
     }
 
     public String getID() {
@@ -48,15 +55,23 @@ public class Passenger {
     }
 
     public void setID(String ID) {
-        this.ID = ID;
+        if(ID.length() >= 10){
+            this.ID = ID;
+        }else{
+            throw new IllegalArgumentException("Invalid ID");
+        }
     }
 
     public String getPhoneNumber() {
-        return phoneNumber;
+        return phone;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhoneNumber(String phone) {
+        if(phone.length() >= 10){
+            this.phone = phone;
+        }else{
+            throw new IllegalArgumentException("Invalid Phone Number");
+        }
     }
 
     public int getAge() {
@@ -64,7 +79,10 @@ public class Passenger {
     }
 
     public void setAge(int age) {
-        this.age = age;
+        if(age >= 16){
+            this.age = age;
+        }else{
+            throw new IllegalArgumentException("Invalid Age");
+        }
     }
-
 }
